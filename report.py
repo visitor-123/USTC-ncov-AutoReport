@@ -91,12 +91,12 @@ class Report(object):
                     soup = BeautifulSoup(data, 'html.parser')
                     token = soup.find("input", {"name": "_token"})['value']
                     token2 = token
-                    t = soup.find("input",{"name": "t"})['value']
+                    # t = soup.find("input",{"name": "t"})['value']
                     data2 = {
                         "_token": token2,
                         "start_date": start_date,
                         "end_date": end_date,
-                        "t": t
+                        "t": 23
                     }
                     print(data2)
                     headers2 = {
