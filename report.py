@@ -73,19 +73,30 @@ class Report(object):
                 # start_date = date.today()
                 if 1:
                     print("Day to apply to go outside, trying to apply")
+                    
+                    '''
                     end_date = start_date + datetime.timedelta(days=6)
                     start_date = start_date.isoformat()
                     end_date = end_date.isoformat()
+                    '''
+                    
+                    timenow = datetime.datetime.now(pytz.timezone('Asia/Shanghai'))
+                    start_date = timenow.strftime("%Y-%m-%d %H:%M:%S")
+                    end_date = date.today() + datetime.timedelta(days=1)
+                    end_date = end_date.isoformat()
+                    end_date = end_date + ' 23:59:59'
+                    
                     data = login.session.get('https://weixine.ustc.edu.cn/2020/apply/daliy').text
                     data = data.encode('ascii', 'ignore').decode('utf-8', 'ignore')
                     soup = BeautifulSoup(data, 'html.parser')
                     token = soup.find("input", {"name": "_token"})['value']
                     token2 = token
+                    t = soup.find("input",{"name": "t"})['value']
                     data2 = {
                         "_token": token2,
                         "start_date": start_date,
                         "end_date": end_date,
-                        "t": 
+                        "t": t
                     }
                     print(data2)
                     headers2 = {
