@@ -70,8 +70,8 @@ class Report(object):
 
                 # apply to go outside
 
-                start_date = date.today()
-                if start_date.weekday() == 3:
+                # start_date = date.today()
+                if 1:
                     print("Day to apply to go outside, trying to apply")
                     end_date = start_date + datetime.timedelta(days=6)
                     start_date = start_date.isoformat()
@@ -84,7 +84,8 @@ class Report(object):
                     data2 = {
                         "_token": token2,
                         "start_date": start_date,
-                        "end_date": end_date
+                        "end_date": end_date,
+                        "t": 
                     }
                     print(data2)
                     headers2 = {
