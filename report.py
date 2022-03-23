@@ -90,7 +90,7 @@ class Report(object):
                     end_date = end_date + ' 23:59:59'
                     '''
                     
-                    # update 2.1
+                    # update 2.1 
                     timenow = datetime.datetime.now(pytz.timezone('Asia/Shanghai'))
                     start_date = timenow.strftime("%Y-%m-%d %H:%M:%S")
                     end_date = date.today()
