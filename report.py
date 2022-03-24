@@ -105,7 +105,11 @@ class Report(object):
                         "_token": token2,
                         "start_date": start_date,
                         "end_date": end_date,
+                        "return_college[]": "东校区",
                         "return_college[]": "西校区",
+                        "return_college[]": "南校区",
+                        "return_college[]": "北校区",
+                        "return_college[]": "中校区",
                         "t": 3
                     }
                     print(data2)
