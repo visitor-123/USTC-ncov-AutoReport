@@ -93,9 +93,7 @@ class Report(object):
                     # update 2.1 
                     timenow = datetime.datetime.now(pytz.timezone('Asia/Shanghai'))
                     start_date = timenow.strftime("%Y-%m-%d %H:%M:%S")
-                    end_date = date.today()
-                    end_date = end_date.isoformat()
-                    end_date = end_date + ' 23:59:59'
+                    end_date = timenow.strftime("%Y-%m-%d 23:59:59")
                     
                     data = login.session.get('https://weixine.ustc.edu.cn/2020/apply/daliy').text
                     data = data.encode('ascii', 'ignore').decode('utf-8', 'ignore')
