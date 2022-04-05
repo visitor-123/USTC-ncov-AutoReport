@@ -110,6 +110,7 @@ class Report(object):
                         "return_college[]": "南校区",
                         "return_college[]": "北校区",
                         "return_college[]": "中校区",
+                        "reason": "上课",
                         "t": 3
                     }
                     print(data2)
