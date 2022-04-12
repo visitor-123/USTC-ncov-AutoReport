@@ -46,8 +46,8 @@ class Report(object):
             print(token1)
 
             #to check if report success
-
-            data = login.session.get("https://weixine.ustc.edu.cn/2020").text
+            '''
+            data = login.session.get("https://weixine.ustc.edu.cn/2020/home").text
             soup = BeautifulSoup(data, 'html.parser')
             pattern = re.compile("202[0-9]-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}")
             token = soup.find(
@@ -67,11 +67,11 @@ class Report(object):
                 print("Report FAILED!")
             else:
                 print("Report SUCCESSFUL!")
-
+            '''
                 # apply to go outside
 
                 # start_date = date.today()
-                if 1:
+            if 1:
                     print("Day to apply to go outside, trying to apply")
                     
                     '''
