@@ -31,6 +31,7 @@ class Login:
         data=self.session.get('https://passport.ustc.edu.cn/login?service='+self.service)
         data=data.text
         data = data.encode('ascii','ignore').decode('utf-8','ignore')
+        print(data)
         soup = BeautifulSoup(data, 'html.parser')
         CAS_LT = soup.find("input", {"name": "CAS_LT"})['value']
         LT=self.get_LT()
