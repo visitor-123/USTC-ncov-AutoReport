@@ -31,8 +31,16 @@ class Login:
         data=self.session.get('https://passport.ustc.edu.cn/login?service='+self.service)
         data=data.text
         data = data.encode('ascii','ignore').decode('utf-8','ignore')
+        print(data)
         soup = BeautifulSoup(data, 'html.parser')
         CAS_LT = soup.find("input", {"name": "CAS_LT"})['value']
+        
+        '''
+        that may not find CAS_LT
+        <form class="loginForm form-style" style="height: 210px" method="post" action="/login" accept-charset="UTF-8">
+	        <input type="hidden" id="CAS_LT" name="CAS_LT" value="LT-ef8288292ec1442490313953812436d3">
+        '''
+        
         LT=self.get_LT()
         data = {
             'model': 'uplogin.jsp',
