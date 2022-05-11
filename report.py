@@ -119,7 +119,7 @@ class Report(object):
                         'cookie': "PHPSESSID=" + login.cookies.get("PHPSESSID") + ";XSRF-TOKEN=" + login.cookies.get(
                             "XSRF-TOKEN") + ";laravel_session=" + login.cookies.get("laravel_session"),
                     }
-                    url2 = "https://weixine.ustc.edu.cn/2020/apply/daliy/post"
+                    url2 = "https://weixine.ustc.edu.cn/2020/apply/daliy/ipost"
                     resp2 = login.session.post(url2, data=data2, headers=headers2)
 
                     # to check if apply success
