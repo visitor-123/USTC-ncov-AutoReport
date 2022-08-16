@@ -268,7 +268,17 @@ class Report(object):
             'reason': "上课/自习",
             't': 3,
         }
+        RETURN_COLLEGE2 = {'高新校区'}
+        REPORT_DATA2 = {
+            '_token': token2,
+            'start_date': start_date,
+            'end_date': end_date,
+            'return_college[]': RETURN_COLLEGE2,
+            'reason': "上课/自习/去实验室",
+            't': 4,
+        }
         ret = session.post(url=REPORT_URL, data=REPORT_DATA)
+        ret = session.post(url=REPORT_URL, data=REPORT_DATA2)
         
         # #删除占用码(可选功能, 默认关闭, 若想开启请取消注释)
         # if (is_new_upload == 1 and is_user_upload == 0):
