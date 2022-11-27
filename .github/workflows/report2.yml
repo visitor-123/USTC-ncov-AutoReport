@@ -56,6 +56,9 @@ jobs:
         ANKANG_URL : ${{ secrets.ANKANG_URL }}
         PHONE : ${{ secrets.PHONE }}
         ADDRESS : ${{ secrets.ADDRESS }}
+        LOCATION : ${{ secrets.LOCATION }}
+        CITY_AREA : ${{ secrets.CITY_AREA }}
+        DETAILED_LOCATION : ${{ secrets.DETAIILED_LOCATION }}
       run: |
         curl ip.sb
-        python report.py data_atschool.json "$STUID" "$PASSWORD" "$EMER_PERSON" "$EMER_RELA" "$EMER_PHONE" "$DORM_BUILDING" "$DORM" "$BIGDATA_URL" "$ANKANG_URL" "$PHONE" "$ADDRESS"
+        python report.py data_atschool.json "$STUID" "$PASSWORD" "$EMER_PERSON" "$EMER_RELA" "$EMER_PHONE" "$DORM_BUILDING" "$DORM" "$BIGDATA_URL" "$ANKANG_URL" "$PHONE" "$ADDRESS" "$LOCATION" "$CITY_AREA" "$DETAILED_LOCATION"
