@@ -30,7 +30,7 @@ DEFAULT_PIC = ['https://raw.githubusercontent.com/pipixia244/South_Seven-AutoRep
                'https://raw.githubusercontent.com/pipixia244/South_Seven-AutoReport/master/ankang.jpg']
 
 class Report(object):
-    def __init__(self, stuid, password, data_path, emer_person, relation, emer_phone, dorm_building, dorm, _14days_pic, ankang_pic, phone, addr):
+    def __init__(self, stuid, password, data_path, emer_person, relation, emer_phone, dorm_building, dorm, _14days_pic, ankang_pic, phone, addr, location, city_area, detailed_location):
         self.stuid = stuid
         self.password = password
         self.data_path = data_path
@@ -41,10 +41,17 @@ class Report(object):
         self.dorm = dorm
         self.pic = [_14days_pic, ankang_pic]
         self.phone = phone
+        self.location = location
         if addr == '':
             self.addr = urllib.parse.quote("安徽省合肥市")
         else:
             self.addr = addr
+        if location == 1 or location == "1": #校外
+            self.in_school = 0
+            self.city_area = city_area
+            self.detailed_location = detailed_location
+        else:
+            self.in_school = 1
         
     def screenshot(self):
         phone = self.phone
@@ -105,9 +112,14 @@ class Report(object):
             data["jinji_lxr"]=self.emer_person
             data["jinji_guanxi"]=self.relation
             data["jiji_mobile"]=self.emer_phone
-            data["dorm_building"]=self.dorm_building
-            data["dorm"]=self.dorm
+            if not self.in_school:
+                data["detailed_location"] = self.detailed_location
+                data["city_area"] = self.city_area
+            else:
+                data["dorm_building"]=self.dorm_building
+                data["dorm"]=self.dorm
             data["_token"]=token
+        
         #print(data)
 
         # 自动健康打卡
@@ -359,10 +371,14 @@ if __name__ == "__main__":
     parser.add_argument('ankang_pic', help='An Kang Health Code', type=str)
     parser.add_argument('phone', help='phone', type=str)
     parser.add_argument('addr', help='addr', type=str)
+    parser.add_argument('location', help='location, 1 for out of school and other for in school', type=str)
+    parser.add_argument('city_area', help='if out of school, input your area. 区行政划分，请写全写正确。', type=str)
+    parser.add_argument('detailed_location', help='if out of school, input your detailed location', type=str)
     args = parser.parse_args()
     autorepoter = Report(stuid=args.stuid, password=args.password, data_path=args.data_path, emer_person=args.emer_person, 
                          relation=args.relation, emer_phone=args.emer_phone, dorm_building=args.dorm_building, dorm=args.dorm, 
-                         _14days_pic=args._14days_pic, ankang_pic=args.ankang_pic, phone=args.phone, addr=args.addr)
+                         _14days_pic=args._14days_pic, ankang_pic=args.ankang_pic, phone=args.phone, addr=args.addr, location=args.location,
+                         city_area=args.city_area, detailed_location=args.detailed_location)
     count = 5
     while count != 0:
         ret = autorepoter.report()
