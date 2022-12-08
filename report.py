@@ -1,20 +1,10 @@
 #!/bin/python3
 # encoding=utf8
-from selenium import webdriver
-from PIL import Image
-import time
-import urllib.parse
 import requests
 import json
-import time
-import datetime
-import pytz
 import re
-import sys
 import argparse
-import urllib.parse
 import io
-import os
 from bs4 import BeautifulSoup
 import PIL
 import pytesseract
