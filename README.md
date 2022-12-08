@@ -1,5 +1,6 @@
 # South Seven Technical School(SSTS)健康打卡平台自动打卡脚本 可用github action
 
+# 恭喜科大在历经9个月的重重审批制后重回报备制！
 # 根据最新通知，健康打卡平台不再需要上传健康码、核酸报告、大数据行程卡，原代码将归档为`report.py.old`，新代码为简化版本。
 
 ## 说明
